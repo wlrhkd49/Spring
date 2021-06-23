@@ -1,0 +1,25 @@
+alt + 1 프로젝트창으로 이동
+ctrl + shift + f12 에디터 창 키우기
+ctrl + tab 에디터 창 이동
+
+새파일 생성
+1) 에디터에서 ctrl + alt + insert
+2) 프로젝트 창에서 alt + insert
+
+주석 처리
+1) 한 줄 주석 ctrl + /
+2) 블록 주석 ctrl + shift + /
+
+자동 인덴트
+ctrl + alt + I
+
+사용처 찾기
+alt + F7
+
+파일 검색
+1)찾기 ctrl + F
+2) 찾은 결과 이동 F3
+3) 전체 찾기 ctrl + shift + F
+
+최근 파일 -> 자주 사용!
+ctrl + E
