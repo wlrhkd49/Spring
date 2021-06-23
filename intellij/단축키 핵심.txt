@@ -23,3 +23,61 @@ alt + F7
 
 최근 파일 -> 자주 사용!
 ctrl + E
+
+psvm -> 메인 메소드 생성
+sout -> println 생성
+
+에러 발생 부분 이동
+F2, shift+F2
+
+코드 생성 (lombok 안쓰는 경우)
+alt + Ins
+
+override 단축키
+ctrl + O
+
+implement 단축키 -> 보통 퀵 픽스 사용.
+ctrl + I
+
+터미널 창 
+alt + F12
+
+대체하기
+1) 파일 내 대체  ctrl + R
+2) 경로 내 대체  ctrl + shift + R
+
+실행
+ctrl + shift + F10
+종료
+ctrl + F2
+
+파라미터 정보
+ctrl + P
+
+기능 찾기
+shift + ctrl + A
+
+테스트 코드
+alt + enter
+
+테스트 코드 이동
+ctrl + shift + T
+
+리팩토링 F6 (패키지 위치 변경)
+타입 변경 ctrl + shift + F6
+시그니처 변경 ctrl + F6 (메소드 정의 요소)
+
+변수명 변경 shift+F6
+
+디버깅 -> 중요
+브레이크 포인트 설정 ctrl + F8
+브레이크 포인트 보기 ctrl + shift + F8
+디버깅 모드 실행 shift + F9
+
+실행 라인 이동 F7, F8
+다음 브레이크 포인트로 이동 F9
+
+
+
+
+
