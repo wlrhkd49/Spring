@@ -1,14 +1,14 @@
-org/sample/model/TodoEntity.java
- org.sample.model.TodoEntity
-org/sample/service/TodoService.java
- org.sample.service.TodoService
-org/sample/repository/TodoRepository.java
- org.sample.repository.TodoRepository
 org/sample/TodoServerApplication.java
  org.sample.TodoServerApplication
 org/sample/model/TodoRequest.java
  org.sample.model.TodoRequest
+org/sample/service/TodoService.java
+ org.sample.service.TodoService
+org/sample/model/TodoModel.java
+ org.sample.model.TodoModel
 org/sample/model/TodoResponse.java
  org.sample.model.TodoResponse
-org/sample/controller/TodoController.java
- org.sample.controller.TodoController
+org/sample/service/repository/TodoRepository.java
+ org.sample.service.repository.TodoRepository
+org/sample/web/TodoController.java
+ org.sample.web.TodoController

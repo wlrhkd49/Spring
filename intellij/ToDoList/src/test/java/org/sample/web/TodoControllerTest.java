@@ -1,9 +1,9 @@
-package org.sample.controller;
+package org.sample.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.sample.model.TodoEntity;
+import org.sample.model.TodoModel;
 import org.sample.model.TodoRequest;
 import org.sample.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +27,11 @@ class TodoControllerTest {
     @MockBean
     TodoService todoService;
 
-    private TodoEntity expected;
+    private TodoModel expected;
 
     @BeforeEach
     void setup() {
-        this.expected = new TodoEntity();
+        this.expected = new TodoModel();
         this.expected.setId(123L);
         this.expected.setTitle("TEST TITLE");
         this.expected.setOrder(0L);
@@ -43,7 +43,7 @@ class TodoControllerTest {
         when(this.todoService.add(any(TodoRequest.class)))
                 .then((i)-> {
                     TodoRequest request = i.getArgument(0, TodoRequest.class);
-                    return new TodoEntity(this.expected.getId(),
+                    return new TodoModel(this.expected.getId(),
                             request.getTitle(),
                             this.expected.getOrder(),
                             this.expected.getCompleted());

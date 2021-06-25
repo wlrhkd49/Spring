@@ -6,9 +6,9 @@ import org.mockito.AdditionalAnswers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.sample.model.TodoEntity;
+import org.sample.model.TodoModel;
 import org.sample.model.TodoRequest;
-import org.sample.repository.TodoRepository;
+import org.sample.service.repository.TodoRepository;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
@@ -35,31 +35,31 @@ class TodoServiceTest {
 
     @Test
     void add() {
-        when(this.todoRepository.save(any(TodoEntity.class)))
+        when(this.todoRepository.save(any(TodoModel.class)))
                 .then(AdditionalAnswers.returnsFirstArg()); //받은 엔티티값을 반환
 
         TodoRequest expected = new TodoRequest();
         expected.setTitle("Test Title");
 
-        TodoEntity actual = this.todoService.add(expected);
+        TodoModel actual = this.todoService.add(expected);
 
         assertEquals(expected.getTitle(), actual.getTitle());
     }
 
     @Test
     void searchById() {
-        TodoEntity entity = new TodoEntity();
+        TodoModel entity = new TodoModel();
         entity.setId(123L);
         entity.setTitle("TITLE");
         entity.setOrder(0L);
         entity.setCompleted(false);
-        Optional<TodoEntity> optional = Optional.of(entity);
+        Optional<TodoModel> optional = Optional.of(entity);
         given(this.todoRepository.findById(anyLong()))
                 .willReturn(optional);
 
-        TodoEntity actual = this.todoService.searchById(123L);
+        TodoModel actual = this.todoService.searchById(123L);
 
-        TodoEntity expected = optional.get();
+        TodoModel expected = optional.get();
 
         assertEquals(expected.getId(), actual.getId());
         assertEquals(expected.getTitle(), actual.getTitle());
