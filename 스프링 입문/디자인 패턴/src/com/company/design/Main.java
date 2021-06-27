@@ -15,6 +15,7 @@ import com.company.design.proxy.IBrowser;
 import com.company.design.singleton.AClazz;
 import com.company.design.singleton.BClazz;
 import com.company.design.singleton.SocketClient;
+import com.company.design.strategy.*;
 
 import java.awt.*;
 import java.util.concurrent.atomic.AtomicLong;
@@ -116,7 +117,7 @@ public class Main {
         button.click("메시지 전달 : click 4");
 
 
-         */
+
 
         // 파사드 패턴
 
@@ -146,6 +147,33 @@ public class Main {
         sftpClient.read();
 
         sftpClient.disConnect();
+
+         */
+
+        // Strategy 패턴
+
+        Encoder encoder = new Encoder();
+
+        // base64
+        EncodingStrategy base64 = new Base64Strategy();
+
+        // normal
+        EncodingStrategy normal = new NormalStrategy();
+
+        String message = "hello java";
+        // 전략을 setting
+        encoder.setEncodingStrategy(base64);
+        String base64Result = encoder.getMessage(message);
+        System.out.println(base64Result);
+
+        // 전략 setting
+        encoder.setEncodingStrategy(normal);
+        String normalResult = encoder.getMessage(message);
+        System.out.println(normalResult);
+
+        encoder.setEncodingStrategy(new AppendStrategy());
+        String appendResult = encoder.getMessage(message);
+        System.out.println(appendResult);
 
     }
 
