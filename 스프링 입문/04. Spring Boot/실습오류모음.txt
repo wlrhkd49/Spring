@@ -1,0 +1,4 @@
+@RequestParam int age 할 경우
+url에서 
+~?age = 10 하면 bad request
+~?age=10 으로 붙여 줘야함
