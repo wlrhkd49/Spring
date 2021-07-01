@@ -2,3 +2,10 @@
 url에서 
 ~?age = 10 하면 bad request
 ~?age=10 으로 붙여 줘야함
+
+
+/**
+ * snake 지정 방법 2가지
+ * 1) @JsonProperty("phone_number")
+ * 2) @JsonNaming(value = PropertyNamingStrategy.SnakeCaseStrategy.class)
+ */
