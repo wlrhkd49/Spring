@@ -9,3 +9,6 @@ url에서
  * 1) @JsonProperty("phone_number")
  * 2) @JsonNaming(value = PropertyNamingStrategy.SnakeCaseStrategy.class)
  */
+
+@PostMapping 시
+메소드 인자값으로 @RequestBody 꼭 붙이기
