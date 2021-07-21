@@ -12,11 +12,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class WishListDto extends MemoryDBEntity {
 
-    private int index;
+    private Integer index;
     private String title;
     private String category;        // 카테고리
     private String address;         // 주소
-    private String readAddress;     // 도로명
+    private String roadAddress;     // 도로명
     private String homePageLink;    // 홈페이지 주소
     private String imageLink;       // 음식, 가게 이미지 주소
     private boolean isVisit;        // 방문 여부
