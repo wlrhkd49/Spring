@@ -1,5 +1,6 @@
 package com.example.eatgo.interfaces;
 
+import com.example.eatgo.application.RestaurantService;
 import com.example.eatgo.domain.MenuItemRepository;
 import com.example.eatgo.domain.MenuItemRepositoryImpl;
 import com.example.eatgo.domain.RestaurantRepository;
@@ -26,8 +27,11 @@ class RestaurantControllerTest {
     @SpyBean(RestaurantRepositoryImpl.class) // test에서 의존성 주입
     private RestaurantRepository restaurantRepository;
 
-    @SpyBean(MenuItemRepositoryImpl.class) // test에서 의존성 주입
-    private MenuItemRepository menuItemRepository;
+    @SpyBean(RestaurantService.class)
+    private RestaurantService restaurantService;
+
+    @SpyBean(MenuItemRepositoryImpl.class)
+    private MenuItemRepository  menuItemRepository;
 
     @Test
     public void list() throws Exception {
