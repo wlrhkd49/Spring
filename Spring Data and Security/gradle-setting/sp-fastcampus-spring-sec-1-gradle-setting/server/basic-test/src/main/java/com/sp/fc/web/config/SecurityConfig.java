@@ -37,12 +37,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     // 홈페이지는 누구나 처음에 들어갈 수 있게 하는 메소드
     @Override
+    // 어떤 필터를 어떻게 끼워넣어서 체인을 구성할 지 설정!
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests((requests) ->
-                requests.antMatchers("/").permitAll() // "/"는 누구나에게 접근 허용 (permitAll())
-                .anyRequest().authenticated()
-        );
-        http.formLogin();
-        http.httpBasic();
+        // 어떤 url에만 채우고 싶으면
+        //http.antMatcher("/**") // 전체 url에 적용
+//        http.authorizeRequests((requests) ->
+//                requests.antMatchers("/").permitAll() // "/"는 누구나에게 접근 허용 (permitAll())
+//                .anyRequest().authenticated()
+//        );
+//        http.formLogin();
+//        http.httpBasic();
     }
 }
