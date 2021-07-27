@@ -1,5 +1,7 @@
 package com.example.eatgo.interfaces;
 
+import com.example.eatgo.domain.MenuItemRepository;
+import com.example.eatgo.domain.MenuItemRepositoryImpl;
 import com.example.eatgo.domain.RestaurantRepository;
 import com.example.eatgo.domain.RestaurantRepositoryImpl;
 import org.junit.jupiter.api.Test;
@@ -24,6 +26,9 @@ class RestaurantControllerTest {
     @SpyBean(RestaurantRepositoryImpl.class) // test에서 의존성 주입
     private RestaurantRepository restaurantRepository;
 
+    @SpyBean(MenuItemRepositoryImpl.class) // test에서 의존성 주입
+    private MenuItemRepository menuItemRepository;
+
     @Test
     public void list() throws Exception {
         mvc.perform(get("/restaurants"))
@@ -37,7 +42,10 @@ class RestaurantControllerTest {
         mvc.perform(get("/restaurants/1004"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"id\":1004")))
-                .andExpect(content().string(containsString("\"name\":\"Bob zip\"")));
+                .andExpect(content().string(containsString("\"name\":\"Bob zip\"")))
+                .andExpect(content().string(
+                containsString("Kimchi")
+        ));
 
         mvc.perform(get("/restaurants/2021"))
                 .andExpect(status().isOk())

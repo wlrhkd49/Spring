@@ -1,7 +1,6 @@
 package com.example.eatgo.interfaces;
 
-import com.example.eatgo.domain.Restaurant;
-import com.example.eatgo.domain.RestaurantRepositoryImpl;
+import com.example.eatgo.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,19 +12,22 @@ public class RestaurantController {
 
     // 의존성 주입
     @Autowired
-    private RestaurantRepositoryImpl repository;
+    private RestaurantRepository restaurantRepository;
+    @Autowired
+    private MenuItemRepository menuItemRepository;
 
     @GetMapping("/restaurants")
     public List<Restaurant> list() {
-        List<Restaurant> restaurants = repository.findAll();
+        List<Restaurant> restaurants = restaurantRepository.findAll();
 
         return restaurants;
     }
 
     @GetMapping("/restaurants/{id}")
     public Restaurant detail(@PathVariable Long id) {
-        Restaurant restaurant = repository.findById(id);
-
+        Restaurant restaurant = restaurantRepository.findById(id);
+        List<MenuItem> menuItems = menuItemRepository.findByRestaurantId(id);
+        restaurant.setMenuItems(menuItems);
         return restaurant;
     }
 
