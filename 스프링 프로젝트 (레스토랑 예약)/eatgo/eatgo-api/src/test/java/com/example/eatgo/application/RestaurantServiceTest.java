@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import static org.mockito.ArgumentMatchers.any;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,8 @@ class RestaurantServiceTest {
         given(restaurantRepository.findAll()).willReturn(restaurants);
 
         given(restaurantRepository.findById(1004L)).willReturn(restaurant);
+
+
     }
 
     @Test
@@ -63,6 +66,17 @@ class RestaurantServiceTest {
     public void getRestaurants() {
         List<Restaurant> restaurants = restaurantService.getRestaurants();
         assertEquals(1004L, restaurants.get(0).getId());
+    }
+
+    @Test
+    public void addRestaurant() {
+        Restaurant restaurant = new Restaurant("BeRyong", "Busan");
+        Restaurant saved = new Restaurant(1234L,"BeRyong", "Busan");
+
+        given(restaurantRepository.save(any())).willReturn(saved);
+        Restaurant created = restaurantService.addRestaurant(restaurant);
+
+        assertEquals(1234L, created.getId());
     }
 
 }
