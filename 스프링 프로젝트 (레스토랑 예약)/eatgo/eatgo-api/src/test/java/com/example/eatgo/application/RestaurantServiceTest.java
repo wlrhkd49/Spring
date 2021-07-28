@@ -1,16 +1,18 @@
 package com.example.eatgo.application;
 
-import com.example.eatgo.domain.*;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
+import com.example.eatgo.domain.MenuItem;
+import com.example.eatgo.domain.MenuItemRepository;
+import com.example.eatgo.domain.Restaurant;
+import com.example.eatgo.domain.RestaurantRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
 class RestaurantServiceTest {
