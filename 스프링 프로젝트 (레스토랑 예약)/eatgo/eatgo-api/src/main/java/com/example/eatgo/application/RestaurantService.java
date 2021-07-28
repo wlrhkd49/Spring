@@ -6,6 +6,7 @@ import com.example.eatgo.domain.Restaurant;
 import com.example.eatgo.domain.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -38,5 +39,14 @@ public class RestaurantService {
 
     public Restaurant addRestaurant(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
+    }
+
+    @Transactional // 이 변경이 범위를 벗어날 때 다같이 적용
+    public Restaurant updateRestaurant(long id, String name, String address) {
+        //TODO: update Restaurant
+        Restaurant restaurant = restaurantRepository.findById(id).orElse(null);
+        restaurant.updateInformation(name, address);
+
+        return restaurant;
     }
 }

@@ -66,4 +66,9 @@ public class Restaurant {
     public void setId(long id) {
         this.id = id;
     }
+
+    public void updateInformation(String name, String address) {
+        this.name =name;
+        this.address = address;
+    }
 }
