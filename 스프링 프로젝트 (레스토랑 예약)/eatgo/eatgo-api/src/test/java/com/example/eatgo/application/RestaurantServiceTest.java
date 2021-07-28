@@ -12,6 +12,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
@@ -49,7 +50,7 @@ class RestaurantServiceTest {
 
         given(restaurantRepository.findAll()).willReturn(restaurants);
 
-        given(restaurantRepository.findById(1004L)).willReturn(restaurant);
+        given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
 
 
     }

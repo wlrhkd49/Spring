@@ -1,11 +1,21 @@
 package com.example.eatgo.domain;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.*;
 
+@Entity
 public class Restaurant {
 
+    @Id
+    @GeneratedValue
     private Long id;
+
     private String name;
     private String address;
+
+    @Transient // 임시로 통과
     private List<MenuItem> menuItems = new ArrayList<>();
 
     public Restaurant(Long id, String name, String address) {
@@ -35,7 +45,7 @@ public class Restaurant {
         return address;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
