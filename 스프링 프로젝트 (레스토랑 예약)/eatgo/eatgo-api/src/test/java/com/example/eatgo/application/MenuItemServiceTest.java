@@ -12,6 +12,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -33,12 +34,14 @@ class MenuItemServiceTest {
     public void bulkUpdate() {
         List<MenuItem> menuItems = new ArrayList<>();
 
-        menuItems.add(MenuItem.builder().name("Kimchi").build());
-        menuItems.add(MenuItem.builder().name("Gukbob").build());
+        menuItems.add(MenuItem.builder().name("Kimchi").build()); // 추가
+        menuItems.add(MenuItem.builder().id(12L).name("Gukbob").build()); // 업데이트
+        menuItems.add(MenuItem.builder().id(1004L).destroy(true).build()); // 삭제
 
         menuItemService.bulkUpdate(1L, menuItems);
 
         verify(menuItemRepository, times(2)).save(any());
+        verify(menuItemRepository, times(1)).deleteById(eq(1004L));
     }
 
 }
