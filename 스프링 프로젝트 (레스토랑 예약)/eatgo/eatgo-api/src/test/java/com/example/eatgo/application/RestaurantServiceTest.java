@@ -1,13 +1,12 @@
 package com.example.eatgo.application;
 
-import com.example.eatgo.domain.MenuItem;
-import com.example.eatgo.domain.MenuItemRepository;
-import com.example.eatgo.domain.Restaurant;
-import com.example.eatgo.domain.RestaurantRepository;
+import com.example.eatgo.domain.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 
 import java.util.ArrayList;
@@ -65,13 +64,21 @@ class RestaurantServiceTest {
     }
 
     @Test
-    public void getRestaurant() {
+    public void getRestaurantWithExisted() {
         Restaurant restaurant = restaurantService.getRestaurant(1004L);
         assertEquals(1004L, restaurant.getId());
 
         MenuItem menuItem = restaurant.getMenuItems().get(0);
         assertEquals("Kimchi", menuItem.getName());
     }
+
+//    @Test()
+//    public void getRestaurantWithNotExisted() {
+//        restaurantService.getRestaurant(404L);
+//        assertThrows(RestaurantNotFoundException.class, () -> {
+//        });
+//    }
+
     @Test
     public void getRestaurants() {
         List<Restaurant> restaurants = restaurantService.getRestaurants();
