@@ -1,10 +1,12 @@
 package com.example.eatgo.domain;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotEmpty;
 import java.util.*;
 
 @Entity
@@ -19,8 +21,10 @@ public class Restaurant {
     @GeneratedValue
     private Long id;
 
+    @NotEmpty
     private String name;
 
+    @NotEmpty
     private String address;
 
 
