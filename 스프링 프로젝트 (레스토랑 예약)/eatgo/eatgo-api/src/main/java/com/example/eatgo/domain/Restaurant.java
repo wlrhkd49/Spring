@@ -1,4 +1,5 @@
 package com.example.eatgo.domain;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -29,6 +30,7 @@ public class Restaurant {
 
 
     @Transient // 임시로 통과
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<MenuItem> menuItems;
 
     public String getInformation() {
