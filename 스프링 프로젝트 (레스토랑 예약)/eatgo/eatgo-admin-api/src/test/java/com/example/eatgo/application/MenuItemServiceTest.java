@@ -34,7 +34,7 @@ class MenuItemServiceTest {
     @Test
     public void getMenuItems() {
         List<MenuItem> mockMenuItems = new ArrayList<>();
-        mockMenuItems.add(MenuItem.builder().name("Kimchi").build());
+        mockMenuItems.add(MenuItem.builder().id(1004L).name("Kimchi").build());
 
         given(menuItemRepository.findByRestaurantId(1004L))
                 .willReturn(mockMenuItems);
