@@ -6,8 +6,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import java.util.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 class ReviewServiceTest {
@@ -24,17 +28,16 @@ class ReviewServiceTest {
     }
 
     @Test
-    public void addReview() {
+    public void getReviews() {
+        List<Review> mockReviews = new ArrayList<>();
+        mockReviews.add(Review.builder().description("Cool!").build());
+        given(reviewRepository.findAll()).willReturn(mockReviews);
 
-        Review review = Review.builder()
-                .name("JOKER")
-                .score(3)
-                .description("Mat-it-da")
-                .build();
+        List<Review> reviews = reviewService.getReviews();
 
-        reviewService.addReview(1004L, review);
+        Review review = reviews.get(0);
 
-        verify(reviewRepository).save(any());
+        assertEquals("Cool!", review.getDescription());
     }
 
 }
