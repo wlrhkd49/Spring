@@ -6,9 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.context.annotation.Bean;
-import java.util.*;
-import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -35,15 +37,6 @@ class RegionServiceTest {
 
         List<Region> regions = regionService.getRegions();
         Region region = regions.get(0);
-
-        assertEquals("Seoul", region.getName());
-    }
-
-    @Test
-    public void addRegion() {
-        Region region = regionService.addRegion("Seoul");
-
-        verify(regionRepository).save(any());
 
         assertEquals("Seoul", region.getName());
     }
