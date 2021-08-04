@@ -21,7 +21,7 @@ public class MenuItemService {
     }
 
     public List<MenuItem> getMenuItems(Long restaurantId) {
-        return menuItemRepository.findByRestaurantId(restaurantId);
+            return menuItemRepository.findByRestaurantId(restaurantId);
     }
 
     public void bulkUpdate(Long id, List<MenuItem> menuItems) {
