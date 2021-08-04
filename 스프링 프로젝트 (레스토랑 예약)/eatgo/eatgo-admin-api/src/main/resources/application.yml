@@ -6,9 +6,9 @@ spring:
       ddl-auto: update
 
 # 어떤 환경에서 쓸 것이다.
----
+#---
 
-spring:
-  profiles: test
-  datasource:
-    url: jdbc:h2:mem:test
+#spring:
+#  profiles: test
+#  datasource:
+#    url: jdbc:h2:mem:test
