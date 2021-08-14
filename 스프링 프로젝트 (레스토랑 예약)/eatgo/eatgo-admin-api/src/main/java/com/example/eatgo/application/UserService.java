@@ -1,10 +1,11 @@
 package com.example.eatgo.application;
-import java.util.*;
+
 import com.example.eatgo.domain.User;
 import com.example.eatgo.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class UserService {
