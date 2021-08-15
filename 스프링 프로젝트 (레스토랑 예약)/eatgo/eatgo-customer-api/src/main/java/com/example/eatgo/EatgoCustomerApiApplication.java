@@ -13,8 +13,4 @@ public class EatgoCustomerApiApplication {
         SpringApplication.run(EatgoCustomerApiApplication.class, args);
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }

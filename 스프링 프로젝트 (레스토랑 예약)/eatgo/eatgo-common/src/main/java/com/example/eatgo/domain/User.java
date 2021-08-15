@@ -47,9 +47,4 @@ public class User {
         level = 0L;
     }
 
-    @JsonIgnore // 패스워드 없는 경우 문제되지 않게함.
-    public String getAccessToken() {
-        if(password == null) return "";
-        return password.substring(0, 10); //password에서 잘라옴
-    }
 }
