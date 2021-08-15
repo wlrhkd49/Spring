@@ -3,6 +3,7 @@ package com.example.eatgo.interfaces;
 import com.example.eatgo.application.EmailNotExistedException;
 import com.example.eatgo.application.PasswordWrongException;
 import com.example.eatgo.application.UserService;
+import com.example.eatgo.domain.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,15 +31,21 @@ class SessionControllerTest {
 
     @Test
     public void createWithValidAttributes() throws Exception {
+        String email = "tester@example.com";
+        String password = "test";
+
+        User mockUser = User.builder().password("ACCESSTOKEN").build();
+
+        given(userService.authenticate(email, password)).willReturn(mockUser);
 
         mvc.perform(post("/session")
                 .contentType(MediaType.APPLICATION_JSON)
                 .contentType("{\"email\":\"tester@example.com\",\"password\":\"test\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("location", "/session"))
-        .andExpect(content().string("{\"accessToken\":\"ACCESSTOKEN\"}"));
+        .andExpect(content().string("{\"accessToken\":\"ACCESSTOKE\"}"));
 
-        verify(userService).authenticate(eq("tester@example.com"),eq("test"));
+        verify(userService).authenticate(eq(email),eq(password));
     }
 
     @Test
@@ -66,4 +73,5 @@ class SessionControllerTest {
 
         verify(userService).authenticate(eq("s@example.com"),eq("test"));
     }
+
 }
