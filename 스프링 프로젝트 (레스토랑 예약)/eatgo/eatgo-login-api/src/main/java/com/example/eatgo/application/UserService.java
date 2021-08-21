@@ -3,7 +3,6 @@ package com.example.eatgo.application;
 import com.example.eatgo.domain.User;
 import com.example.eatgo.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,6 +44,18 @@ public class UserService {
 
         return userRepository.save(user);
 
+    }
+
+    public User authenticate(String email, String password) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new EmailNotExistedException(email));
+
+        // password 다른경우
+        if(!passwordEncoder.matches(password, user.getPassword())) {
+            throw new PasswordWrongException();
+        }
+
+        return user;
     }
 
 

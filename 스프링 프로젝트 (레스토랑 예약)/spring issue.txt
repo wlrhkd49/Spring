@@ -1,0 +1,19 @@
+Header.Payload.Signature
+
+Payload 에 데이터 담김
+Claim 은 payload에 담기는 데이터 (userId or 사용자 이름)
+
+token모양 (type: String)
+Header.Payload.Signature
+
+AccessToken전달은 Http의 Header 통해 전달
+Header에는 Key/Value로 여러 데이터 전달 가능 
+Authorization: Bearer
+
+요청마다 토큰을 받을 것이기 때문에 모든 요청에 대해 Filter 필요
+Filter요청마다 Jwt 토큰 확인하고 토큰이 있으면 정보를 얻어 
+사용자 Id, 이름 확인 가능
+BasicAuthenticationFilter로 가능
+
+AuthenticationToken을 사용해서 어떤 사용자가 사용중인지 확인
+UsernamePasswordAuthenticationToken사용 

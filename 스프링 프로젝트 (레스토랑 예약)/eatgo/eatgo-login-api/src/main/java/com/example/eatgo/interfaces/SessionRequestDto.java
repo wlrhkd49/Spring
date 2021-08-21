@@ -1,4 +1,4 @@
-package com.example.eatgo.application;
+package com.example.eatgo.interfaces;
 
 import lombok.Data;
 

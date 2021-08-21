@@ -25,24 +25,21 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
     }
 
     /**
-     * 실제로 JWT 분석
-     * @param request
-     * @param response
-     * @param chain
-     * @throws IOException
-     * @throws ServletException
+     * 실제로 JWT 분석 필요
      */
     @Override
-    protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response,
-                                    FilterChain chain)
-            throws IOException, ServletException {
+    protected void doFilterInternal(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            FilterChain chain
+    ) throws IOException, ServletException {
+        // Header에서 데이터 얻기
         Authentication authentication = getAuthentication(request);
 
+        // 토큰이 없다면
         if(authentication != null) {
             SecurityContext context = SecurityContextHolder.getContext();
             context.setAuthentication(authentication);
-
         }
 
         chain.doFilter(request, response); // 다음 작업으로 계속 연결
@@ -57,10 +54,12 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
         //TODO:JwtUtil에서 claims 얻기
         Claims claims = jwtUtil.getClaims(token.substring("Bearer ".length()));
+        // "Bearer ".length() 이만큼은 제거!
         // 실제로는 Authorization: Bearer TOKEN.**** 이므로 Bearer를 뺴줘야함
 
         Authentication authentication =
-                new UsernamePasswordAuthenticationToken(claims, null); // principal, credentials
+                new UsernamePasswordAuthenticationToken(claims, null);
+        // 1. principal, 2. credentials
         return authentication;
     }
 }

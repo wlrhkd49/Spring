@@ -1,7 +1,5 @@
 package com.example.eatgo.interfaces;
 
-import com.example.eatgo.application.SessionRequestDto;
-import com.example.eatgo.application.SessionResponseDto;
 import com.example.eatgo.application.UserService;
 import com.example.eatgo.domain.User;
 import com.example.eatgo.utils.JwtUtil;
@@ -31,6 +29,7 @@ public class SessionController {
         String email = resource.getEmail();
         String password = resource.getPassword();
 
+        // 로그인 과정
         User user = userService.authenticate(email, password);
 
         String accessToken = jwtUtil.createToken(user.getId(), user.getName());

@@ -28,6 +28,9 @@ public class ReviewController {
             @PathVariable Long restaurantId,
             @Valid @RequestBody Review resource
     ) throws URISyntaxException {
+        /**
+         * Authentication은 Authorization: Bearer <token> 형태!
+         */
         Claims claims = (Claims) authentication.getPrincipal();
 
         String name = claims.get("name", String.class);
